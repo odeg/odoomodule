@@ -1,0 +1,49 @@
+<odoo>
+    <!-- Acción primero -->
+    <record id="action_producto_personalizado" model="ir.actions.act_window">
+        <field name="name">Productos Personalizados</field>
+        <field name="res_model">producto.personalizado</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vistas -->
+    <record id="view_producto_form" model="ir.ui.view">
+        <field name="name">producto.personalizado.form</field>
+        <field name="model">producto.personalizado</field>
+        <field name="arch" type="xml">
+            <form string="Producto Personalizado">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="price"/>
+                        <field name="stock"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_producto_tree" model="ir.ui.view">
+        <field name="name">producto.personalizado.tree</field>
+        <field name="model">producto.personalizado</field>
+        <field name="arch" type="xml">
+            <tree string="Producto Personalizado">
+                <field name="name"/>
+                <field name="price"/>
+                <field name="stock"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Menú -->
+    <menuitem id="menu_inventario_personalizado_root"
+              name="Productos Personalizados"
+              parent="stock.menu_stock_root"
+              sequence="10"/>
+
+    <menuitem id="menu_inventario_personalizado"
+              name="Productos"
+              parent="menu_inventario_personalizado_root"
+              action="action_producto_personalizado"/>
+</odoo>
